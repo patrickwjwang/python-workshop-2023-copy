@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Chris Paciorek">
+<meta name="dcterms.date" content="2023-08-11">
+
+<title>Introduction to Python</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="python_files/libs/clipboard/clipboard.min.js"></script>
+<script src="python_files/libs/quarto-html/quarto.js"></script>
+<script src="python_files/libs/quarto-html/popper.min.js"></script>
+<script src="python_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="python_files/libs/quarto-html/anchor.min.js"></script>
+<link href="python_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="python_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="python_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="python_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="python_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a>
+  <ul class="collapse">
+  <li><a href="#preparation" id="toc-preparation" class="nav-link" data-scroll-target="#preparation">Preparation</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources">Resources</a></li>
+  <li><a href="#python-2-vs.-3" id="toc-python-2-vs.-3" class="nav-link" data-scroll-target="#python-2-vs.-3">Python 2 vs.&nbsp;3</a></li>
+  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#formatting-python-code" id="toc-formatting-python-code" class="nav-link" data-scroll-target="#formatting-python-code">Formatting Python code</a></li>
+  <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects">Objects</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
+  <li><a href="#modules-files-packages-import" id="toc-modules-files-packages-import" class="nav-link" data-scroll-target="#modules-files-packages-import">Modules, files, packages, import</a></li>
+  <li><a href="#style" id="toc-style" class="nav-link" data-scroll-target="#style">Style</a></li>
+  <li><a href="#documentation-and-getting-help" id="toc-documentation-and-getting-help" class="nav-link" data-scroll-target="#documentation-and-getting-help">Documentation and getting help</a></li>
+  <li><a href="#decoding-error-messages" id="toc-decoding-error-messages" class="nav-link" data-scroll-target="#decoding-error-messages">Decoding error messages</a></li>
+  </ul></li>
+  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures">Data Structures</a>
+  <ul class="collapse">
+  <li><a href="#numbers" id="toc-numbers" class="nav-link" data-scroll-target="#numbers">Numbers</a></li>
+  <li><a href="#objects-and-object-oriented-programming" id="toc-objects-and-object-oriented-programming" class="nav-link" data-scroll-target="#objects-and-object-oriented-programming">Objects and object-oriented programming</a></li>
+  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings">Strings</a></li>
+  <li><a href="#tuples" id="toc-tuples" class="nav-link" data-scroll-target="#tuples">Tuples</a></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link" data-scroll-target="#lists">Lists</a></li>
+  <li><a href="#dictionaries" id="toc-dictionaries" class="nav-link" data-scroll-target="#dictionaries">Dictionaries</a></li>
+  <li><a href="#sets" id="toc-sets" class="nav-link" data-scroll-target="#sets">Sets</a></li>
+  </ul></li>
+  <li><a href="#built-in-functions" id="toc-built-in-functions" class="nav-link" data-scroll-target="#built-in-functions">Built-in functions</a></li>
+  <li><a href="#control-flow" id="toc-control-flow" class="nav-link" data-scroll-target="#control-flow">Control flow</a>
+  <ul class="collapse">
+  <li><a href="#if-then-else" id="toc-if-then-else" class="nav-link" data-scroll-target="#if-then-else">If-then-else</a></li>
+  <li><a href="#for-loops-and-list-comprehension" id="toc-for-loops-and-list-comprehension" class="nav-link" data-scroll-target="#for-loops-and-list-comprehension">For-loops (and list comprehension)</a></li>
+  </ul></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#classes" id="toc-classes" class="nav-link" data-scroll-target="#classes">Classes</a></li>
+  <li><a href="#data-formats" id="toc-data-formats" class="nav-link" data-scroll-target="#data-formats">Data formats</a>
+  <ul class="collapse">
+  <li><a href="#csv" id="toc-csv" class="nav-link" data-scroll-target="#csv">CSV</a></li>
+  <li><a href="#json" id="toc-json" class="nav-link" data-scroll-target="#json">JSON</a></li>
+  </ul></li>
+  <li><a href="#standard-library" id="toc-standard-library" class="nav-link" data-scroll-target="#standard-library">Standard library</a>
+  <ul class="collapse">
+  <li><a href="#os" id="toc-os" class="nav-link" data-scroll-target="#os">os</a></li>
+  <li><a href="#re" id="toc-re" class="nav-link" data-scroll-target="#re">re</a></li>
+  </ul></li>
+  <li><a href="#math-statistics-and-plotting" id="toc-math-statistics-and-plotting" class="nav-link" data-scroll-target="#math-statistics-and-plotting">Math, statistics, and plotting</a>
+  <ul class="collapse">
+  <li><a href="#numpy-and-scipy" id="toc-numpy-and-scipy" class="nav-link" data-scroll-target="#numpy-and-scipy">Numpy and scipy</a></li>
+  <li><a href="#pandas" id="toc-pandas" class="nav-link" data-scroll-target="#pandas">Pandas</a></li>
+  <li><a href="#matplotlib" id="toc-matplotlib" class="nav-link" data-scroll-target="#matplotlib">Matplotlib</a></li>
+  </ul></li>
+  <li><a href="#mini-project" id="toc-mini-project" class="nav-link" data-scroll-target="#mini-project">Mini-project</a></li>
+  <li><a href="#a-note-on-the-contents" id="toc-a-note-on-the-contents" class="nav-link" data-scroll-target="#a-note-on-the-contents">A Note on the Contents</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Introduction to Python</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Chris Paciorek </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 11, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="background" class="level1">
+<h1>Background</h1>
+<section id="preparation" class="level2">
+<h2 class="anchored" data-anchor-id="preparation">Preparation</h2>
+<p>This tutorial assumes you are have a bit of familiarity with some high-level language such as R or MATLAB. Some of the exercises as you to compare the Python functionality to functionality in R. Feel free to ignore these if you’re not familiar with R.</p>
+<p>You will also need Python (IPython will also be helpful) installed on your computer, as well as a few core additional packages, including re, numpy, scipy, matplotlib, and pandas.</p>
+<p>We recommend using <a href="https://www.anaconda.com/distribution">the Anaconda distribution of Python</a>, but you can see various options in the <a href="https://berkeley-scf.github.io/python-workshop-2023/#instructions-for-accessing-python">short course overview</a>.</p>
+<p>Packages can generally be installed via pip, or via conda if you have the Anaconda or Miniconda installation of Python. The following shows how to do this from the command line (this will work on MacOS or Linux, not sure about Windows).</p>
+<pre class="{bash}"><code>conda list
+conda install numpy
+
+## using mamba (a fast drop-in replacement for `conda`)
+mamba list
+mamba install numpy
+
+## using pip
+pip install numpy
+# or to install within your home directory if you do not have admin control of the computer
+pip install --user numpy
+</code></pre>
+<p>For additional help with installation, please see the <a href="https://statistics.berkeley.edu/computing/software/python">this SCF documentation</a> or this <a href="https://berkeley-stat243.github.io/stat243-fall-2023/howtos/accessingPython.html">Statistics 243 documentation</a>.</p>
+</section>
+<section id="resources" class="level2">
+<h2 class="anchored" data-anchor-id="resources">Resources</h2>
+<p>Useful written references and tutorials:</p>
+<ul>
+<li><a href="https://docs.python.org/3/index.html" class="uri">https://docs.python.org/3/index.html</a></li>
+<li><a href="https://docs.python.org/3/library/index.html" class="uri">https://docs.python.org/3/library/index.html</a></li>
+<li><a href="https://scipy-lectures.github.io/" class="uri">https://scipy-lectures.github.io/</a></li>
+</ul>
+<p>While working through this tutorial, you should type the example code snippets at an interactive Python terminal. You may wish to use either the IPython shell (which has some additional functionality relative to a plain Python session) or a Jupyter IPython notebook. To start an IPython shell, type the following at a bash prompt:</p>
+<pre class="{bash}"><code>ipython</code></pre>
+<p>To start an Jupyter IPython notebook locally on your computer, type this at the command line and a notebook should open in your browser.</p>
+<pre class="{bash}"><code>jupyter notebook</code></pre>
+<p>Alternatively you can access Jupyter notebooks through a service called JupyterHub, in particular the <a href="https://berkeley-stat243.github.io/stat243-fall-2023/howtos/accessingPython.html#python-via-jupyter-notebook">campus DataHub or SCF JupyterHub</a>.</p>
+<p>Side note: to have all output of printing objects to the screen by typing the object name (not just the last result) printed in the Jupyter notebook, you can run this in a cell in your notebook.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.core.interactiveshell <span class="im">import</span> InteractiveShell</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>InteractiveShell.ast_node_interactivity <span class="op">=</span> <span class="st">"all"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="python-2-vs.-3" class="level2">
+<h2 class="anchored" data-anchor-id="python-2-vs.-3">Python 2 vs.&nbsp;3</h2>
+<p>Until a few years ago, many people still used Python 2 even though Python 3 was available. It’s possible you’ll run across Python 2 code or the occasional person still using Python 2.</p>
+<p>Python 3 is the current version of Python (more specifically Python 3.11), which is in some ways incompatible with Python 2. You should be using Python 3, though most of the code here will also work in Python 2.</p>
+</section>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<section id="formatting-python-code" class="level2">
+<h2 class="anchored" data-anchor-id="formatting-python-code">Formatting Python code</h2>
+<p>Unlike most languages, in Python indentation determines code blocks, including functions, loops, and if-else statements.</p>
+<p>The standard is 4 spaces (some people use a tab instead), but you can use other spacing if it’s consistent within a block of code.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a> a <span class="op">=</span> <span class="dv">3</span>  <span class="co"># this will cause an IndentationError in Python itself, but not IPython/Jupytr</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a<span class="op">&gt;=</span><span class="dv">4</span>:    </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'a is big'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(a <span class="op">==</span> <span class="dv">4</span>):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'a is 4'</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'a is small'</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a<span class="op">&gt;=</span><span class="dv">4</span>:    </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">'a is big'</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(a <span class="op">==</span> <span class="dv">4</span>):</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'a is 4'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'a is not 4'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="objects" class="level2">
+<h2 class="anchored" data-anchor-id="objects">Objects</h2>
+<p>Everything is an object in Python. Roughly, this means that it can be tagged with a variable (i.e., given a name) and passed as an argument to a function. Objects have <em>attributes</em>, which include <em>fields</em> and <em>methods</em>.</p>
+<p>Certain objects in Python are mutable (e.g., lists, dictionaries), while other objects are immutable (e.g., tuples, strings, sets). Mutable means one can change parts of the object.</p>
+<p>Many objects can be composite (e.g., a list of dictionaries or a dictionary of lists, tuples, and strings).</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>myList <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">'foo'</span>]</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>myList[<span class="dv">1</span>] <span class="op">=</span> <span class="fl">2.5</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>myList</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>myTuple <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="st">'foo'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    myTuple[<span class="dv">1</span>] <span class="op">=</span> <span class="fl">2.5</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> error:</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(error)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>myTuple</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'tuple' object does not support item assignment</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>(1, 2, 'foo')</code></pre>
+</div>
+</div>
+</section>
+<section id="variables" class="level2">
+<h2 class="anchored" data-anchor-id="variables">Variables</h2>
+<p>As in R and other interpreted languages, variables are not their values in Python (think “I am not my name, I am the person named XXX”). You can think of variables as tags on objects. In particular, variables can be bound to an object of one type and then reassigned to an object of another type without error.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="st">'foobar'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">*</span> <span class="dv">4</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(a)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>a</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>a<span class="op">*</span><span class="dv">4</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(a)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: object of type 'int' has no len()</code></pre>
+</div>
+</div>
+</section>
+<section id="modules-files-packages-import" class="level2">
+<h2 class="anchored" data-anchor-id="modules-files-packages-import">Modules, files, packages, import</h2>
+<p>While you will often explore things from an interactive Python prompt, you will save your code in files for reuse as well as to document what you’ve done. You can use Python code saved in a plain text file (i.e., a <em>module</em>) from a Python prompt or other files by importing it. Typically, this is done at the top of a file (if you are working at a prompt, you just need to import it before you want to use the functionality).</p>
+<pre class="{bash}"><code>cat mymod.py  # special IPython functionality to call the operating system</code></pre>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span>(a)<span class="op">;</span> <span class="kw">del</span>(hello)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mymod</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>mymod.hello()</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>mymod.a</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>hello()</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is convenient, but often not seen as good practice, as is reduces modularity and can interfere with already-existing objects.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mymod <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>hello()</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As in R, you can also load in additional supporting packages for extra functionality. Here are some examples of importing Python packages:</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> cos</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cos(<span class="dv">0</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>sin(<span class="dv">0</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>math.cos(<span class="dv">0</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>()</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>()</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>math.cos(<span class="dv">0</span>)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>math.sin(<span class="dv">0</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">dir</span>(math)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>numpy.arctan(<span class="dv">1</span>) </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>np.arctan(<span class="dv">1</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy <span class="im">as</span> sp</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When we import packages, they are in different <em>namespaces</em>, which helps to avoid problems with different packages using the same names for different functions or objects.</p>
+</section>
+<section id="style" class="level2">
+<h2 class="anchored" data-anchor-id="style">Style</h2>
+<p>Adopting standard coding conventions is good practice.</p>
+<ul>
+<li><a href="https://www.python.org/dev/peps/pep-0008/" class="uri">https://www.python.org/dev/peps/pep-0008/</a></li>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#intermezzo-coding-style" class="uri">https://docs.python.org/3/tutorial/controlflow.html#intermezzo-coding-style</a></li>
+</ul>
+<p>The first link above is the official “Style Guide for Python Code”, usually referred to as PEP8 (PEP is an acronym for Python Enhancement Proposal). There are a couple of potentially helpful tools for helping you conform to the standard. The <a href="https://pypi.python.org/pypi/pep8">pep8</a> package that provides a commandline tool to check your code against some of the PEP8 standard conventions. Similarly, <a href="https://pypi.python.org/pypi/autopep8">autopep8</a> provides a tool to automatically format your code so that it conforms to the PEP8 standards.</p>
+</section>
+<section id="documentation-and-getting-help" class="level2">
+<h2 class="anchored" data-anchor-id="documentation-and-getting-help">Documentation and getting help</h2>
+<p>Getting help pulls up the relevant <em>docstring</em> (see here for some <a href="https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard">guidance on writing docstrings</a> (in particular for NumPy). Let’s briefly see how you might benefit from docstrings in practice.</p>
+<pre><code>In [1]: import numpy as np
+
+In [2]: np.ndim?
+Signature: np.ndim(a)
+Docstring:
+Return the number of dimensions of an array.
+
+Parameters
+----------
+a : array_like
+    Input array.  If it is not already an ndarray, a conversion is
+    attempted.
+
+Returns
+-------
+number_of_dimensions : int
+    The number of dimensions in `a`.  Scalars are zero-dimensional.
+
+See Also
+--------
+ndarray.ndim : equivalent method
+shape : dimensions of array
+ndarray.shape : dimensions of array
+
+Examples
+--------
+&gt;&gt;&gt; np.ndim([[1,2,3],[4,5,6]])
+2
+&gt;&gt;&gt; np.ndim(np.array([[1,2,3],[4,5,6]]))
+2
+&gt;&gt;&gt; np.ndim(1)
+0
+File:      /usr/local/linux/mambaforge-3.11/lib/python3.11/site-packages/numpy/core/fromnumeric.py
+Type:      function</code></pre>
+<p>Docstrings are an important part of Python. A docstring is a character string that occurs as the first statement in a module, function, class, or method definition. Such a docstring becomes the <strong>doc</strong> special attribute of that object. All modules should normally have docstrings, and all functions and classes exported by a module should also have docstrings.</p>
+<p>We can see the docstring directly in the file indicated above (<code>fromnumeric.py</code>) as well as the actual code of the function.</p>
+<p><strong>Exercises</strong></p>
+<p>Note that <code>?</code> and <code>??</code> only work in IPython (or a Jupyter notebook). For help in plain Python, use <code>help(np.ndim)</code>.</p>
+<ul>
+<li><p>What happens if you type <code>np.ndim??</code> (i.e., use two question marks)?</p></li>
+<li><p>What does <code>np.ndim()</code> do? How does it execute under the hood? Consider why the following uses of <code>ndim</code> both work.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>])</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>a.ndim</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>np.ndim(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now explain why only one of these works.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>a.ndim</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>np.ndim(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Type <code>np.ndarray?</code> at an IPython prompt. Briefly skim the docstring. <code>ndarray</code> is the basic data structure provided by NumPy. We will examine it in much more detail later.</p></li>
+<li><p>Type <code>np.</code> followed by the <code>&lt;Tab&gt;</code> key at an IPython prompt. Choose two or three of the completions and use <code>?</code> to view their docstrings. In particular, pay attention to the examples provided near the end of the docstring and see whether you can figure out how you might use this functionality.</p></li>
+</ul>
+</section>
+<section id="decoding-error-messages" class="level2">
+<h2 class="anchored" data-anchor-id="decoding-error-messages">Decoding error messages</h2>
+<p>Let’s run the following code and try to tease out where the error is. The tricky part is that the error occurs within a function where the function comes from a module (separate code file).</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> days</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>days.print_friday_message()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We’ll run that first in a plain Python session and then in an IPython session that shows more information about what happened.</p>
+<p>The list of function calls that led to the error is called a <em>traceback</em>. (Note that in R you can get similar output using <code>traceback()</code> after an error or setting <code>options(error = recover)</code> before an error.)</p>
+</section>
+</section>
+<section id="data-structures" class="level1">
+<h1>Data Structures</h1>
+<p>Python has a number of basic data structure types that are widely used. There are both similarities and differences from basic data structures in R.</p>
+<ul>
+<li><a href="https://docs.python.org/3/library/stdtypes.html" class="uri">https://docs.python.org/3/library/stdtypes.html</a></li>
+<li><a href="https://docs.python.org/3/tutorial/datastructures.html" class="uri">https://docs.python.org/3/tutorial/datastructures.html</a></li>
+<li><a href="https://docs.python.org/3/reference/datamodel.html" class="uri">https://docs.python.org/3/reference/datamodel.html</a></li>
+</ul>
+<section id="numbers" class="level2">
+<h2 class="anchored" data-anchor-id="numbers">Numbers</h2>
+<p>Python has integers, floats, and complex numbers with the usual operations.</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="op">*</span><span class="dv">3</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">1.1</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">*</span> <span class="dv">2</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>(<span class="bu">type</span>(<span class="dv">1</span>), <span class="bu">type</span>(<span class="fl">1.1</span>), <span class="bu">type</span>(<span class="dv">1</span><span class="op">+</span><span class="ot">2j</span>))</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">1</span><span class="op">+</span><span class="ot">2j</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can apply various functions to numbers, as expected.</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cos(0)  # Why would this fail?</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>math.cos(<span class="dv">0</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>math.cos(math.pi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>-1.0</code></pre>
+</div>
+</div>
+<p>The <code>math</code> package in the standard library includes many additional numerical operations.</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>math.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>math.acos       math.degrees    math.fsum       math.pi
+math.acosh      math.e          math.gamma      math.pow
+math.asin       math.erf        math.hypot      math.radians
+math.asinh      math.erfc       math.isinf      math.sin
+math.atan       math.exp        math.isnan      math.sinh
+math.atan2      math.expm1      math.ldexp      math.sqrt
+math.atanh      math.fabs       math.lgamma     math.tan
+math.ceil       math.factorial  math.log        math.tanh
+math.copysign   math.floor      math.log10      math.trunc
+math.cos        math.fmod       math.log1p      
+math.cosh       math.frexp      math.modf</code></pre>
+<p><strong>Exercises</strong></p>
+<ul>
+<li><p>Using the section on “Built-in Types” from the <a href="https://docs.python.org/3/library/index.html">official “The Python Standard Library” reference</a>, figure out how to compute:</p>
+<ol type="1">
+<li>3 modulo 4,</li>
+<li><span class="math inline">\((\lceil \frac{3}{4} \rceil \times 4)^3\)</span>, and</li>
+<li><span class="math inline">\(\sqrt{-1}\)</span>.</li>
+</ol></li>
+<li><p>Is the result of <code>5/3 - 2/3</code> of the integer type? Is the mathematical value seen in Python an integer? What about <code>7/3-4/3</code>?</p></li>
+<li><p>Here’s a numerical puzzle. Why does the last computation not work, when the others do? And, for those of you coming from R, which of these computations don’t work in R?</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100000</span><span class="op">**</span><span class="dv">10</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fl">100000.0</span><span class="op">**</span><span class="dv">10</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="dv">100000</span><span class="op">**</span><span class="dv">100</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fl">100000.0</span><span class="op">**</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="objects-and-object-oriented-programming" class="level2">
+<h2 class="anchored" data-anchor-id="objects-and-object-oriented-programming">Objects and object-oriented programming</h2>
+<p>We’ll talk about this in more detail later, but it’s worth mentioning here that Python is an object-oriented language. What this means is that variables in Python are objects that are instances of a class.</p>
+<p>Objects have methods that can be used on them and fields (member data) that are part of the object. All objects in a class have the same methods and same member data ‘slots’, but different objects will have different values in those slots.</p>
+<p>Note that even the basic numeric structures behave like objects. We can use tab completion to see what methods are available for an object and what member data are part of an object.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">3.0</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(x)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>x.</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># x.as_integer_ratio  x.hex               x.real</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># x.conjugate         x.imag              </span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># x.fromhex           x.is_integer        </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Which of those are attributes/metadata (‘member data’) and which are methods (‘member functions’)? If it’s a method, say <code>foo</code>, you can run the method as <code>x.foo()</code>. If it’s member data, you can see its value with <code>x.foo</code>.</p>
+</section>
+<section id="strings" class="level2">
+<h2 class="anchored" data-anchor-id="strings">Strings</h2>
+<p>Strings are immutable sequences of (zero or more) characters.</p>
+<p><strong>Sequences</strong></p>
+<p>Unlike numbers, Python strings are container objects. Specifically, it is a sequence. Python has several sequence types including strings, tuples, and lists. Sequence types share some common functionality, which we can demonstrate with strings.</p>
+<p><strong>Indexing</strong></p>
+<p>To see how indexing works in Python let’s use the string containing the digits 0 through 9.</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>string.digits </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>string.digits[<span class="dv">1</span>]</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>string.digits[<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Note that indexing starts at 0 (unlike R and Fortran, but like C). Also negative integers index starting from the end of the sequence. You can find the length of a sequence using the <code>len</code> function.</p>
+<p><strong>Slicing</strong></p>
+<p>Slicing allows you to select a subset of a string (or any sequence) by specifying start and stop indices as well as a step, which you specify using the <code>start:stop:step</code> notation inside of square braces.</p>
+<p>As we work through these, try to guess what they will do.</p>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>string.digits[<span class="dv">1</span>:<span class="dv">5</span>]</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>string.digits[<span class="dv">1</span>:<span class="dv">5</span>:<span class="dv">2</span>]</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>string.digits[<span class="dv">1</span>::<span class="dv">2</span>]</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>string.digits[:<span class="dv">5</span>:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>string.digits[<span class="dv">1</span>:<span class="dv">5</span>:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>string.digits[<span class="op">-</span><span class="dv">3</span>:<span class="op">-</span><span class="dv">7</span>:<span class="op">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Subsequence testing</strong></p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">'23'</span> <span class="kw">in</span> string.digits </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">'25'</span> <span class="kw">not</span> <span class="kw">in</span> string.digits</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>String methods</strong></p>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"my string"</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>string1.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>string1.capitalize  string1.islower     string1.rpartition
+string1.center      string1.isspace     string1.rsplit
+string1.count       string1.istitle     string1.rstrip
+string1.decode      string1.isupper     string1.split
+string1.encode      string1.join        string1.splitlines
+string1.endswith    string1.ljust       string1.startswith
+string1.expandtabs  string1.lower       string1.strip
+string1.find        string1.lstrip      string1.swapcase
+string1.format      string1.partition   string1.title
+string1.index       string1.replace     string1.translate
+string1.isalnum     string1.rfind       string1.upper
+string1.isalpha     string1.rindex      string1.zfill
+string1.isdigit     string1.rjust       </code></pre>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"my string"</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>string1.upper()</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>string1.upper?</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">+</span> <span class="st">" is your string."</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">"*"</span><span class="op">*</span><span class="dv">10</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>string1[<span class="dv">3</span>:]</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>string1[<span class="dv">3</span>:<span class="dv">4</span>] </span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>string1[<span class="dv">4</span>::<span class="dv">2</span>]</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>string1[<span class="dv">3</span>:<span class="dv">5</span>] <span class="op">=</span> <span class="st">'ts'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: 'str' object does not support item assignment</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">&gt;</span> <span class="st">"ab"</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">&gt;</span> <span class="st">"zz"</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>string1.__</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>string1.__add__           string1.__len__
+string1.__class__         string1.__lt__
+string1.__contains__      string1.__mod__
+string1.__delattr__       string1.__mul__
+string1.__doc__           string1.__ne__
+string1.__eq__            string1.__new__
+string1.__format__        string1.__reduce__
+string1.__ge__            string1.__reduce_ex__
+string1.__getattribute__  string1.__repr__
+string1.__getitem__       string1.__rmod__
+string1.__getnewargs__    string1.__rmul__
+string1.__getslice__      string1.__setattr__
+string1.__gt__            string1.__sizeof__
+string1.__hash__          string1.__str__
+string1.__init__          string1.__subclasshook__</code></pre>
+<p>What do you think is invoked when one does <code>string1 &gt; 'ab'</code>?</p>
+<p><strong>Exercises</strong></p>
+<ul>
+<li>Using this string: <code>x = 'The ant wants what all ants want.'</code>, solve the following string manipulation problems using string indexing, slicing, methods, and subsequence testing:
+<ol type="1">
+<li>Convert the string to all lower case letters (don’t change x).</li>
+<li>Count the number of occurrences of the substring <code>ant</code>.</li>
+<li>Create a list of the words occurring in <code>x</code>. Make sure to remove punctuation and convert all words to lowercase.</li>
+<li>Using only string methods on <code>x</code>, create the following string: <code>The chicken wants what all chickens want.</code></li>
+<li>Using indexing and the <code>+</code> operator, create the following string: <code>The tna wants what all ants want.</code></li>
+<li>Do the same thing except using a string method instead.</li>
+</ol></li>
+<li>What can you do with the <code>in</code> and <code>not in</code> operators? For those coming from R, what R operator is this like and how is it different?</li>
+<li>Figure out what code you could run to figure out if Python is explicitly counting the number of characters when it does <code>len(x)</code>?</li>
+<li>Compare the time for computing the length of a (long) string in Python and R. What can you infer about what is happening behind the scenes?</li>
+</ul>
+</section>
+<section id="tuples" class="level2">
+<h2 class="anchored" data-anchor-id="tuples">Tuples</h2>
+<p>Tuples are immutable sequences of (zero or more) objects. Functions in Python often return tuples.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> y <span class="op">=</span> <span class="st">'foo'</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> (x, y)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(xy)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>xy <span class="op">=</span> x,y</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(xy)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>xy</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>xy[<span class="dv">1</span>]</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>xy[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">3</span>  <span class="co"># immutable!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: 'tuple' object does not support item assignment</code></pre>
+</div>
+</div>
+<p><strong>Exercises</strong></p>
+<ul>
+<li><p>What’s weird about this? What are the types involved?</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> x,y</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>a,b <span class="op">=</span> x,y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Create the following: <code>x=5</code> and <code>y=6</code>. Now swap their values using a single line of code. (For R users, how would you do this in R?)</p></li>
+<li><p>What happens when you multiply a tuple by a number? For R users, how is this different than similar syntax in R?</p></li>
+<li><p>What’s nice about using immutable objects in your code?</p></li>
+</ul>
+</section>
+<section id="lists" class="level2">
+<h2 class="anchored" data-anchor-id="lists">Lists</h2>
+<p>Lists are mutable sequences of (zero or more) objects.</p>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>dice <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>dice[<span class="dv">1</span>::<span class="dv">2</span>]</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>dice[<span class="dv">1</span>::<span class="dv">2</span>] <span class="op">=</span> dice[::<span class="dv">2</span>]</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>dice</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>dice<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>dice<span class="op">+</span>dice[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="kw">in</span> dice</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>dice.extend(dice)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>dice2 <span class="op">=</span> dice.copy()</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(dice)   <span class="co"># the 'id' gives the location in memory where the object is stored</span></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(dice2)</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>dice.append(dice2)</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="co"># if use dice.append(dice) it embeds a pointer to itself </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Exercises</strong></p>
+<ul>
+<li><p>Create a list of numbers. Reverse the order of the items in the list using slicing. Now reverse the order of the items using a list method. How does using the method differ from slicing?</p></li>
+<li><p>Do you think tuples have a method to reverse the order of its items? Why or why not? Check to see if you are correct or not.</p></li>
+<li><p>Using a list method sort your numbers. Create a list of strings and sort it.</p></li>
+<li><p>Figure out some different ways of combining your list of numbers with your list of strings to create a single list of mixed type elements.</p></li>
+<li><p>Now try to sort the resulting list. What happens?</p></li>
+<li><p>What does the following tell you about copying and use of memory in Python?</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>]</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(a)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(b)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># this should confirm what you might suspect</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="dictionaries" class="level2">
+<h2 class="anchored" data-anchor-id="dictionaries">Dictionaries</h2>
+<p>Dictionaries are mutable, unordered collections of key-value pairs.</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>students <span class="op">=</span> {<span class="st">"Jarrod Millman"</span>: [<span class="st">'A'</span>, <span class="st">'B+'</span>, <span class="st">'A-'</span>], </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Thomas Kluyver"</span>: [<span class="st">'A-'</span>, <span class="st">'A-'</span>], </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">"Stefan van der Walt"</span>: <span class="st">'and now for something completely different'</span>}</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>students</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>students.keys()</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>students.values()</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>students[<span class="st">"Jarrod Millman"</span>]</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>students[<span class="st">"Jarrod Millman"</span>][<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>'B+'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>students.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>students.clear(       students.items(       students.setdefault(
+students.copy(        students.keys(        students.update(
+students.fromkeys(    students.pop(         students.values(
+students.get(         students.popitem()    </code></pre>
+<p><strong>Exercises</strong></p>
+<ul>
+<li>How can you add an item to a dictionary.</li>
+<li>How do you combine two dictionaries into a single dictionary?</li>
+<li>What are some analogs to dictionaries in R?</li>
+<li>How are dictionaries different from such analogous structures in R?</li>
+</ul>
+</section>
+<section id="sets" class="level2">
+<h2 class="anchored" data-anchor-id="sets">Sets</h2>
+<p>Sets are immutable, unordered collections of unique elements.</p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span>  {<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">4</span>}</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>x</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>x.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre><code>x.add                          x.issubset
+x.clear                        x.issuperset
+x.copy                         x.pop
+x.difference                   x.remove
+x.difference_update            x.symmetric_difference
+x.discard                      x.symmetric_difference_update
+x.intersection                 x.union
+x.intersection_update          x.update
+x.isdisjoint                   </code></pre>
+</section>
+</section>
+<section id="built-in-functions" class="level1">
+<h1>Built-in functions</h1>
+<ul>
+<li><a href="https://docs.python.org/3/library/functions.html" class="uri">https://docs.python.org/3/library/functions.html</a></li>
+</ul>
+<p>Python has several built-in functions (you can find a full list using the link above). We’ve already used a few (e.g., <code>len(), type(), print()</code>). Here are a few more that we you will find useful.</p>
+<p><code>zip</code> and <code>enumerate</code> create objects that you can iterate through, but you can’t view the elements directly except by looping over them. They’re useful either to convert to lists or to loop through element by element.</p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">zip</span>([<span class="dv">1</span>, <span class="dv">2</span>], [<span class="st">"a"</span>, <span class="st">"b"</span>])</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>[(1, 'a'), (2, 'b')]</code></pre>
+</div>
+</div>
+<p>That’s sort of like <code>cbind</code> in R.</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="bu">enumerate</span>([<span class="st">"a"</span>, <span class="st">"b"</span>])</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">enumerate</span>([<span class="st">"a"</span>, <span class="st">"b"</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>[(0, 'a'), (1, 'b')]</code></pre>
+</div>
+</div>
+<p>We’ll soon see an example usage of enumerate within the context of looping.</p>
+<p>Some other useful built-in functions are <code>abs()</code>, <code>all()</code>, <code>any()</code>, <code>dict()</code>, <code>dir()</code>, <code>id()</code>, <code>list()</code>, and <code>set()</code>.</p>
+</section>
+<section id="control-flow" class="level1">
+<h1>Control flow</h1>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html" class="uri">https://docs.python.org/3/tutorial/controlflow.html</a></li>
+</ul>
+<section id="if-then-else" class="level2">
+<h2 class="anchored" data-anchor-id="if-then-else">If-then-else</h2>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#if-statements" class="uri">https://docs.python.org/3/tutorial/controlflow.html#if-statements</a></li>
+</ul>
+<p>This is as expected based on your experience with other languages. As previously noted, the indentation is important.</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;=</span><span class="dv">4</span> :    </span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'a is big'</span>)</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(a <span class="op">==</span> <span class="dv">4</span>):</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'a is 4'</span>)</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'a is small'</span>)</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> a <span class="op">&gt;=</span><span class="dv">4</span> :    </span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'a is big'</span>)</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(a <span class="op">==</span> <span class="dv">4</span>):</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'a is 4'</span>)</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'a is not 4'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a is small</code></pre>
+</div>
+</div>
+</section>
+<section id="for-loops-and-list-comprehension" class="level2">
+<h2 class="anchored" data-anchor-id="for-loops-and-list-comprehension">For-loops (and list comprehension)</h2>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#for-statements" class="uri">https://docs.python.org/3/tutorial/controlflow.html#for-statements</a></li>
+<li><a href="https://docs.python.org/3/whatsnew/2.0.html#list-comprehensions" class="uri">https://docs.python.org/3/whatsnew/2.0.html#list-comprehensions</a></li>
+</ul>
+<p>Here’s basic use of a for loop. Once again indentation is critical, in this case for indicating where the loop ends.</p>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]:</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]:</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> x<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(y, end<span class="op">=</span><span class="st">" "</span>)</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">30</span>):</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> x</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y, end<span class="op">=</span><span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1
+2
+3
+4
+2 4 6 8 
+
+29 </code></pre>
+</div>
+</div>
+<p>Building up a list piece-by-piece is a common task, which can easily be done in a for-loop. List comprehension provides a compact syntax to handle this task.</p>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>[x <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>)]</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>vals <span class="op">=</span> [<span class="op">-</span><span class="dv">4</span>, <span class="dv">3</span>, <span class="op">-</span><span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">7</span>]</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>[x <span class="cf">for</span> x <span class="kw">in</span> vals <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>]  <span class="co"># list comprehension</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> string</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>letters <span class="op">=</span> string.ascii_lowercase</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co"># concise but terse:</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>[l[<span class="dv">1</span>] <span class="cf">for</span> l <span class="kw">in</span> <span class="bu">enumerate</span>(letters) <span class="cf">if</span> l[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">13</span>]</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a><span class="co"># better style:</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>[letter <span class="cf">for</span> index, letter <span class="kw">in</span> <span class="bu">enumerate</span>(letters) <span class="cf">if</span> index <span class="op">&gt;</span> <span class="dv">13</span>]</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="bu">zip</span>([<span class="st">'clinton'</span>, <span class="st">'bush'</span>, <span class="st">'obama'</span>, <span class="st">'trump'</span>], [<span class="st">'Dem'</span>, <span class="st">'Rep'</span>, <span class="st">'Dem'</span>, <span class="st">'Rep'</span>])</span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pres,party <span class="kw">in</span> x:</span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(pres, party)</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a><span class="co"># note if we try to do the loop again, we get nothing, because</span></span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a><span class="co"># we have emptied the iterator when we loop through it</span></span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> pres,party <span class="kw">in</span> x:</span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(pres, party)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>clinton Dem
+bush Rep
+obama Dem
+trump Rep</code></pre>
+</div>
+</div>
+<p><strong>Exercises</strong></p>
+<ul>
+<li>See what <code>[1, 2, 3] + 3</code> returns. Try to explain what happened and why.</li>
+<li>Use list comprehension to perform element-wise addition of a scalar to a list of scalars.</li>
+<li>How would you do the same task using a for loop? The <code>range</code> function may be helpful as might the <code>enumerate</code> function.</li>
+<li>Use a for loop to iterate through the elements of a zip object and determine the type of the individual elements.</li>
+</ul>
+</section>
+</section>
+<section id="functions" class="level1">
+<h1>Functions</h1>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions" class="uri">https://docs.python.org/3/tutorial/controlflow.html#defining-functions</a></li>
+</ul>
+<p>Here’s an example that illustrates both positional arguments (always first) and named arguments.</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add(x, y<span class="op">=</span><span class="dv">1</span>, absol<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> absol:</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(<span class="bu">abs</span>(x<span class="op">+</span>y))</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(x<span class="op">+</span>y)</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">3</span>)</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">3</span>, absol<span class="op">=</span><span class="va">True</span>, y<span class="op">=-</span><span class="dv">5</span>)</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>add(y<span class="op">=-</span><span class="dv">5</span>, x<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>add(y<span class="op">=-</span><span class="dv">5</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>SyntaxError: positional argument follows keyword argument (1024892447.py, line 13)</code></pre>
+</div>
+</div>
+<p><strong>Exercises</strong></p>
+<ul>
+<li><p>Define a function that will take the sqrt of a number and will (if requested by the user) set the square root of a negative number to 0.</p></li>
+<li><p>Now use the function in a list comprehension to operate on a list of numbers.</p></li>
+<li><p>What happens if you modify a list within a function in Python; why do you think this is?</p></li>
+<li><p>What happens if you modify a single number (scalar) within a function in Python; why do you think this is?</p></li>
+<li><p>Recall how scoping works in R in terms of where objects are looked for if not found locally in a function (i.e., lexical scoping). Empirically assess how scoping works in Python. In other words, consider this function and how it will behave depending on where <code>f</code> is defined.</p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(x<span class="op">+</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="classes" class="level1">
+<h1>Classes</h1>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/classes.html" class="uri">https://docs.python.org/3/tutorial/classes.html</a></li>
+</ul>
+<p>We’ve already seen a bunch of object-oriented behavior. Here we’ll see how to make our own classes and objects that are instances (realizations) of a class.</p>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Rectangle(<span class="bu">object</span>):</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    dim <span class="op">=</span> <span class="dv">2</span>  <span class="co"># class variable</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, height, width):</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.height <span class="op">=</span> height  <span class="co"># instance variable</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.width <span class="op">=</span> width    <span class="co"># instance variable</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.set_diagonal()</span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>        Rectangle.counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__repr__</span>(<span class="va">self</span>):</span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(<span class="st">"</span><span class="sc">{0}</span><span class="st"> by </span><span class="sc">{1}</span><span class="st"> rectangle"</span>.<span class="bu">format</span>(<span class="va">self</span>.height, <span class="va">self</span>.width))        </span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> area(<span class="va">self</span>, verbose <span class="op">=</span> <span class="va">False</span>):</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> verbose:</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">'Computing the area... '</span>)</span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span>(<span class="va">self</span>.height<span class="op">*</span><span class="va">self</span>.width)</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> set_diagonal(<span class="va">self</span>):</span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.diagonal <span class="op">=</span> <span class="bu">pow</span>(<span class="va">self</span>.height<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> <span class="va">self</span>.width<span class="op">**</span><span class="dv">2</span>, <span class="fl">0.5</span>)</span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> Rectangle(<span class="dv">10</span>, <span class="dv">5</span>)</span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a>x.dim</span>
+<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>x.dim <span class="op">=</span> <span class="st">'foo'</span></span>
+<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a>x.dim <span class="co"># hmmm</span></span>
+<span id="cb59-23"><a href="#cb59-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-24"><a href="#cb59-24" aria-hidden="true" tabindex="-1"></a>x.area()</span>
+<span id="cb59-25"><a href="#cb59-25" aria-hidden="true" tabindex="-1"></a>Rectangle.area(x)</span>
+<span id="cb59-26"><a href="#cb59-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-27"><a href="#cb59-27" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> Rectangle(<span class="dv">4</span>, <span class="dv">8</span>)</span>
+<span id="cb59-28"><a href="#cb59-28" aria-hidden="true" tabindex="-1"></a>y.counter</span>
+<span id="cb59-29"><a href="#cb59-29" aria-hidden="true" tabindex="-1"></a>x.counter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>2</code></pre>
+</div>
+</div>
+</section>
+<section id="data-formats" class="level1">
+<h1>Data formats</h1>
+<section id="csv" class="level2">
+<h2 class="anchored" data-anchor-id="csv">CSV</h2>
+<ul>
+<li><a href="https://docs.python.org/3/library/csv.html" class="uri">https://docs.python.org/3/library/csv.html</a></li>
+</ul>
+<p>The Python standard library provides a package for reading and writing CSV files. This is a somewhat low-level library, so in practice you will often use Pandas (or perhaps NumPy/SciPy) CSV functionality.</p>
+</section>
+<section id="json" class="level2">
+<h2 class="anchored" data-anchor-id="json">JSON</h2>
+<ul>
+<li><a href="https://docs.python.org/3/library/json.html" class="uri">https://docs.python.org/3/library/json.html</a></li>
+</ul>
+<p>However the JSON package in the standard library is much more useful.</p>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> {<span class="st">"name"</span>: <span class="st">"Jarrod"</span>, <span class="st">"department"</span>: <span class="st">"Biostatistics"</span>}</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"tmp.json"</span>, <span class="st">"w"</span>) <span class="im">as</span> outfile: </span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>    json.dump(x, outfile)</span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="co"># cat tmp.json  # special IPython functionality</span></span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"tmp.json"</span>) <span class="im">as</span> infile:</span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> json.load(infile)</span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>{'name': 'Jarrod', 'department': 'Biostatistics'}</code></pre>
+</div>
+</div>
+<p>Note that <code>cat</code> is not a Python statement. IPython is clever enough to guess that you want it to call out to the underlying operating system.</p>
+<p><strong>Exercise</strong></p>
+<ul>
+<li>One of the nice things above the JSON format is that it so well structured that it easy for a machine to parse, but simple enough that it easy for humans to read. By default <code>json.dump</code> writes everything out to disk without line breaks. For readability purposes, use <code>json.dump?</code> to figure out how to pretty-print the text as well as sort it alphabetically by key.</li>
+<li>Read in one of the JSON files in the <code>project</code> directory and experiment with pretty-printing it when you dump it back out to a file.</li>
+</ul>
+</section>
+</section>
+<section id="standard-library" class="level1">
+<h1>Standard library</h1>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/stdlib.html" class="uri">https://docs.python.org/3/tutorial/stdlib.html</a></li>
+</ul>
+<p>Python provides a wealth of functionality in its huge standard library. We’ve already seen several packages in the standard library (e.g., <code>math</code>, <code>csv</code>, <code>json</code>). If you need some functionality the standard library is one of the first places to look.</p>
+<p>Here are a couple packages that you may find useful.</p>
+<section id="os" class="level2">
+<h2 class="anchored" data-anchor-id="os">os</h2>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/stdlib.html#operating-system-interface" class="uri">https://docs.python.org/3/tutorial/stdlib.html#operating-system-interface</a></li>
+</ul>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>pwd           <span class="co"># IPython operating system call</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">'..'</span>)</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Exercise</strong></p>
+<ul>
+<li>Use <code>os?</code> and <code>dir(os)</code> to explore the os package.</li>
+</ul>
+</section>
+<section id="re" class="level2">
+<h2 class="anchored" data-anchor-id="re">re</h2>
+<ul>
+<li><a href="https://docs.python.org/3/howto/regex.html" class="uri">https://docs.python.org/3/howto/regex.html</a></li>
+</ul>
+<p>The <code>re</code> package provides support for regular expressions.</p>
+</section>
+</section>
+<section id="math-statistics-and-plotting" class="level1">
+<h1>Math, statistics, and plotting</h1>
+<section id="numpy-and-scipy" class="level2">
+<h2 class="anchored" data-anchor-id="numpy-and-scipy">Numpy and scipy</h2>
+<p>Standard lists in Python are not amenable to mathematical manipulation, unlike standard vectors in R. Instead we generally work with numpy arrays. These arrays can be of various dimensions (i.e., vectors, matrices, multi-dimensional arrays).</p>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>] </span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.array(z)</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>y<span class="op">*</span><span class="dv">3</span></span>
+<span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>y.dtype</span>
+<span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-9"><a href="#cb64-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-10"><a href="#cb64-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>]], dtype<span class="op">=</span>np.float64)</span>
+<span id="cb64-11"><a href="#cb64-11" aria-hidden="true" tabindex="-1"></a>x<span class="op">*</span>x</span>
+<span id="cb64-12"><a href="#cb64-12" aria-hidden="true" tabindex="-1"></a>x.dot(x)</span>
+<span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a>x.T</span>
+<span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a>np.linalg.svd(x)</span>
+<span id="cb64-16"><a href="#cb64-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-17"><a href="#cb64-17" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> np.linalg.eig(x)</span>
+<span id="cb64-18"><a href="#cb64-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-19"><a href="#cb64-19" aria-hidden="true" tabindex="-1"></a>e[<span class="dv">0</span>]  <span class="co"># first eigenvalue (not the largest in this case...)</span></span>
+<span id="cb64-20"><a href="#cb64-20" aria-hidden="true" tabindex="-1"></a>e[<span class="dv">1</span>][:, <span class="dv">0</span>] <span class="co"># corresponding eigenvector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>array([-0.82456484,  0.56576746])</code></pre>
+</div>
+</div>
+<p>All of the elements of the array must be of the same type.</p>
+<p>There are a variety of numpy functions that allow us to do standard mathematical/statistical manipulations.</p>
+<p>Here we’ll use some of those functions in addition to some syntax for subsetting and vectorized calculations.</p>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> x <span class="op">&gt;</span> <span class="dv">0</span></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x[pos]</span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>x[[<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>]]</span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>x[pos] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb66-13"><a href="#cb66-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-14"><a href="#cb66-14" aria-hidden="true" tabindex="-1"></a>np.cos(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>array([1.        , 1.        , 1.        , 1.        , 1.        ,
+       0.55928119, 1.        , 0.98856735, 0.99467766, 1.        ])</code></pre>
+</div>
+</div>
+<p>scipy has even more numerical routines, including working with distributions and additional linear algebra.</p>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> st</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>st.norm.cdf(<span class="fl">1.96</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>st.norm.cdf(<span class="fl">1.96</span>, <span class="fl">0.5</span>, <span class="dv">2</span>)</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>st.norm(<span class="fl">0.5</span>, <span class="dv">2</span>).cdf(<span class="fl">1.96</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>0.7673049076991025</code></pre>
+</div>
+</div>
+<p><strong>Exercise</strong></p>
+<ul>
+<li>See what happens if you try to create a 2-d numpy array with one column of numbers and one column of characters/strings.</li>
+<li>Try to add a vector to a matrix; how does this compare to R?</li>
+<li>How do you compute the variance of each column of a matrix (akin to <code>apply(x, 2, var)</code> in R)? Try this first without ChatGPT, and then (if you have access to ChatGPT) see what ChatGPT tells you.</li>
+</ul>
+</section>
+<section id="pandas" class="level2">
+<h2 class="anchored" data-anchor-id="pandas">Pandas</h2>
+<p>Pandas provides a Python implementation of R’s dataframe capabilities. Let’s see some example code.</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>dat <span class="op">=</span> pd.read_csv(<span class="st">'gapminder.csv'</span>)</span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>dat.head()</span>
+<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>dat.columns</span>
+<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>dat[<span class="st">'year'</span>]</span>
+<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>dat.year</span>
+<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>dat[<span class="dv">0</span>:<span class="dv">5</span>]</span>
+<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>dat.sort_values([<span class="st">'year'</span>, <span class="st">'country'</span>])</span>
+<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a>dat.loc[<span class="dv">0</span>:<span class="dv">5</span>, [<span class="st">'year'</span>, <span class="st">'country'</span>]]  <span class="co"># R-style indexing</span></span>
+<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a>dat[dat.year <span class="op">==</span> <span class="dv">1952</span>]</span>
+<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a>ndat <span class="op">=</span> dat[[<span class="st">'pop'</span>,<span class="st">'lifeExp'</span>,<span class="st">'gdpPercap'</span>]]</span>
+<span id="cb70-17"><a href="#cb70-17" aria-hidden="true" tabindex="-1"></a>ndat.<span class="bu">apply</span>(<span class="kw">lambda</span> col: col.<span class="bu">max</span>() <span class="op">-</span> col.<span class="bu">min</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>pop          1.318623e+09
+lifeExp      5.900400e+01
+gdpPercap    1.132820e+05
+dtype: float64</code></pre>
+</div>
+</div>
+<p>Now let’s see the sort of split-apply-combine functionality that is popular in dplyr and related R packages.</p>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>dat2007 <span class="op">=</span> dat[dat.year <span class="op">==</span> <span class="dv">2007</span>].copy()  </span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>dat2007.groupby(<span class="st">'continent'</span>, as_index<span class="op">=</span><span class="va">False</span>).mean()</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> stdize(vals):</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>((vals <span class="op">-</span> vals.mean()) <span class="op">/</span> vals.std())</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>dat2007[<span class="st">'lifeExpZ'</span>] <span class="op">=</span> dat2007.groupby(<span class="st">'continent'</span>)[<span class="st">'lifeExp'</span>].transform(stdize)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_1727751/3626335382.py:3: FutureWarning:
+
+The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+</code></pre>
+</div>
+</div>
+<p><strong>Exercise</strong></p>
+<ul>
+<li>Use <code>pd.merge()</code> to merge the continent means for life expectancy for 2007 back into the original <code>dat2007</code> dataFrame.</li>
+<li>Explore the pandas documentation to see if there is a way to add the continent means as a column without an explicit merge (i.e., mimicing capability built into R’s dplyr mutate function)?</li>
+</ul>
+</section>
+<section id="matplotlib" class="level2">
+<h2 class="anchored" data-anchor-id="matplotlib">Matplotlib</h2>
+<p>Work through the material in <a href="http://matplotlib.org/users/pyplot_tutorial.html">the Matplotlib tutorial</a> and then solve the following problems.</p>
+<p><strong>Exercise</strong></p>
+<ul>
+<li>Make a scatterplot of lifeExp vs gdpPerCap for 2007; make sure you have nice axis labels and title.</li>
+<li>Consider whether plotting income on a logarithmic axis is a better way to display the data.</li>
+<li>Now make an array of plots (in one figure) where each subplot is a different year.</li>
+<li>Now modify the plot so that the color of the point indicates the continent and add a legend that explains this (hint: it’s probably easier to do this with plt.scatter than plt.plot). Hint: This snippet of code can help with relating continents to particular colors: <code>dict(zip(conts, colors))</code>.</li>
+<li>Find an outlier whose lifeExp is unexpectedly high or low and add text in the plot that associates the point with the name of the country (e.g., I suspect Cuba will be unexpectedly high and an oil-producing country may be unexpectedly low).</li>
+</ul>
+</section>
+</section>
+<section id="mini-project" class="level1">
+<h1>Mini-project</h1>
+<p>Please open <code>project.html</code> and work through the analysis of the Senatorial tweets with your group.</p>
+</section>
+<section id="a-note-on-the-contents" class="level1">
+<h1>A Note on the Contents</h1>
+<p>This content was adapted by Chris Paciorek from <a href="http://www.jarrodmillman.com/capstone/bootcamp/standard.html">material prepared by K. Jarrod Millman</a> and is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>.</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
