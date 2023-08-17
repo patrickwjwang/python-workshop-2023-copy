@@ -12,5 +12,5 @@ def print_message(day):
 
 
 def print_friday_message():
-    print_message("Friday")
+    print_message("friday")
 
